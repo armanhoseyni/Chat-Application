@@ -1,0 +1,20 @@
+:root {
+    --profile-bg: #0069cc;
+    --profile-hover-bg: #0084ff;
+    --profile-color: #fff;
+    --header-bg: #333;
+    /* chat colors
+    ff6476
+    */
+    --chat-bg: #222;
+    --my-message-bg: #ff6476;
+    --my-message-color: #222;
+    --their-message-bg: #000;
+    --their-message-color: #fff;
+    --site-bg: #ff6476;
+    /* Dropdown colors */
+    --user-bg: #0069cc;
+    --user-hover-bg: #0084ff;
+    --user-color: #fff;
+    --search-bg: #fff;
+}

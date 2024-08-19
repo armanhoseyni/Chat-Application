@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+
+    --primary-color: #0069cc;
+    --primary-color-500: #0084ff;
+}
+.outer-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--site-bg);
+    
+    display: flex;
+    justify-content: center;
+}
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.inner-container {
+    height: 100vh;
+    display: flex;
+}
+.left-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 1rem;
+    background-color: var(--profile-bg);
+    transition: all 75ms;
+}
+.left-head:hover {
+    background-color: var(--primary-color-500);
+}
+.btn-ui {
+    color: var(--profile-color);
+    background-color: var(--profile-bg);
+}
+.btn-ui:hover {
+    background-color: var(--profile-hover-bg);
+}
+.user {
+    background-color: var(--user-bg);
+    color: var(--user-color);
+}
+.user:hover {
+    background-color: var(--user-hover-bg);
+}
+.search {
+    background-color: var(--search-bg);
+}
+.left-profile {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition: all 75ms, width 10ms height 10ms;
+}
+.left-head--name {
+    color: white;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: var(--chat-bg);
+    backdrop-filter: blur(5px);
+    max-width: 800px;
+}
+.header {
+    width: 100%;
+    background-color: var(--header-bg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+/* .header-profile-div {
+    overflow: hidden;
+} */
+.header-profile {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition: all 75ms, width 10ms height 10ms;
+    box-shadow: 0 0 0 #000;
+}
+.header-profile:hover {
+    box-shadow: 0 0 5px #fff ;
+}
+.header-user-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 7px;
+    color: white;
+}
+.header-user-detail--status {
+    color: rgb(44, 223, 44);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.header-user-detail--status::before {
+    --size: 8px;
+    content: "";
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: block;
+    background-color: rgb(44, 223, 44);
+
+    animation: headerpingonline 2s infinite both ease-in-out;
+}
+@keyframes headerpingonline {
+    0% {
+        scale: 0.8;
+    }
+    50% {
+        scale: 1.2;
+    }
+    100% {
+        scale: 0.8;
+    }
+}
+.writer {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background-color: white;
+    padding: 5px 1rem;
+}
+.writer-input {
+    background: none;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 50px;
+    font-size: 1.1rem;
+}
+.writer-emojies-btn,
+.writer-send-btn {
+    font-size: 2rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.writer-emojies-btn:hover {
+    background-color: rgb(155, 155, 155);
+
+}
+.writer-send-btn-icon {
+    width: 30px;
+}
+
+.messages {
+    flex: 1;
+    height: 100%;
+    overflow: scroll;
+    width: 100%;
+    /* border: 1px black solid; */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.my-message {
+    display: flex;
+    justify-content: flex-end;
+}
+.their-message {
+    display: flex;
+    justify-content: flex-start;
+}
+.message-content {
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 70%;
+}
+.my-message .message-content {
+    background-color: var(--my-message-bg);
+    color: var(--my-message-color);
+}
+.their-message .message-content {
+    background-color: var(--their-message-bg);
+    color: var(--their-message-color);
+}
+.message-sender {
+    font-size: 0.8rem;
+}
+.message-time {
+    font-size: 0.7em; /* Make the time smaller */
+    color: #888;
+    position: absolute;
+    bottom: 5px;
+    right: 10px; /* Align to the right */
+}

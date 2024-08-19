@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Chat</title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- styles -->
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="fonts.css">
+        <!-- Fonts -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Chat Box</title>
+    </head>
+    <body>
+        <!-- constaner -->
+        <div class="outer-container roboto">
+
+            <div class="container">
+
+                <div class="inner-container">
+                    <div class="left hidden md:block">
+                        <div class="left-head">
+                            <img src="images/profile.jpg" alt="" class="left-profile">
+                            <div class="left-head--name roboto-bold">
+                                Arman Hosiny
+                            </div>
+                        </div>
+                        <div class="left-btns flex ">
+                            <button class="left-btn flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                <a href="/login">
+                                    Login
+                                </a>
+                            </button>
+                            <button class="left-btn flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                <a href="/sign up">
+                                    Sign up
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <!-- Header -->
+                        <div class="header md:hidden">
+                            <div class="flex gap-2">
+                                <p style="color: #ff6476; font: bold;">Public Chat</p>
+                            </div>
+                            <div class="right md:hidden">
+                                <div class="left-btns flex flex-col justify-center items-center w-full">
+                                    <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                                        <a href="/login">
+                                            Login
+                                        </a>
+                                    </button>
+                                    <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                        <a href="/sign up">
+                                            Sign up
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right flex gap-1 md:hidden relative">
+                            <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                                <a href="/public chat">
+                                    Public Chat
+                                </a>
+                            </button>
+                            <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                <a href="/private chat">
+                                    Private Chat
+                                </a>
+                            </button>
+                        </div>
+                        <div class="messages">
+
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Hello man
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Hi Arman. how are you
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Fine, where've you been til now?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Ohh man. fuck it. I had a car accident
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Oh. what happened? are You alright?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Yes dude. I'm fine. thanks
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        have you gone to see a doctor?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Hello man
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Hi Arman. how are you
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Fine, where've you been til now?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Ohh man. fuck it. I had a car accident
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Oh. what happened? are You alright?
+                                        Oh. what happened? are You alright?
+                                        Oh. what happened? are You alright?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Yes dude. I'm fine. thanks
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        have you gone to see a doctor?
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="writer">
+                            <input type="text" class="writer-input" placeholder="Send a Message">
+                            <div class="writer-emojies-btn">🤠</div>
+                            <div class="writer-send-btn">
+                                <img src="images/send.png" alt="->" class="writer-send-btn-icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right hidden md:block">
+                        <div class="left-btns flex flex-col w-48">
+
+                            <button class="flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                <a href="/sign up">
+                                    Private Chat
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
+</body>
+</html>
