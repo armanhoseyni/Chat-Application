@@ -35,4 +35,5 @@ app.MapControllerRoute(
     pattern: "{controller=ChatRoom}/{action=PublicChat}/{id?}");
 app.MapHub<ChatRoom>("/PChat");
 
+
 app.Run();

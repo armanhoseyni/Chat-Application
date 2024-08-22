@@ -6,6 +6,7 @@ using NuGet.Protocol;
 using Chat_Application.Areas.Identity.Data;
 using Chat_Application.Models;
 using DB;
+using System.Security.Cryptography;
 
 namespace Chat_Application.Hubs
 {
@@ -89,6 +90,52 @@ namespace Chat_Application.Hubs
 
         }
 
+    /*    public async Task CreateGuest( [FromServices] UserManager<ApplicationUser> userManager)
+
+        {
+            var guest = "";
+            while (true) {
+                var b = "1234567890";
+                Random ran = new Random();
+                int length = 6;
+
+                String random = "";
+
+                for (int i = 0; i < length; i++)
+                {
+                    int a = ran.Next(10);
+                    random = random + b.ElementAt(a);
+                }
+
+                var g= "Guest" + random;
+                ApplicationUser CheckUser = await userManager.FindByNameAsync(guest);
+                if (CheckUser == null) {
+                    guest = g;
+                    break;
+                }
+            }
+
+            ApplicationUser NewUser = new ApplicationUser
+            {
+                UserName = guest    
+                
+
+
+            };
+            db.Add(NewUser);
+            db.SaveChanges();
+
+
+
+            ApplicationUser SenderUserinfo = await userManager.FindByNameAsync(guest);
+
+
+            
+        }
+*/
+
+
+
         public async Task RegisterUserInSignalR(string username,[FromServices]UserManager<ApplicationUser> userManager)
         {
 
@@ -122,11 +169,10 @@ namespace Chat_Application.Hubs
 
             
 
-            string recipientId = "0a7891b6-057d-40dd-93b7-fbffa0500b4e";
             
             
             var messages = db.UserMessages
-                .Where(x => x.RecepientUser_Id == recipientId)
+                .Where(x => x.RecepientUser_Id == rec)
                 .ToList();
 
 
@@ -136,7 +182,7 @@ namespace Chat_Application.Hubs
          .Join(userManager.Users,
           message => message.SenderUser_Id,
           user => user.Id,
-          (message, user) => user.FirstName)
+          (message, user) => user.UserName)
              .ToList();
 
 

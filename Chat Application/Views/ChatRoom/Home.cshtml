@@ -1,0 +1,375 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="~/assets/js/vendor/jquery-3.2.1.min.js"></script>
+
+    <!-- font---------------------------------------->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/materialdesignicons.css">
+    <!-- plugin-------------------------------------->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/nice-select.css">
+    <link rel="stylesheet" href="assets/css/vendor/jquery.jqZoom.css">
+    <link rel="stylesheet" href="assets/css/vendor/sweetalert2.min.css">
+    <!-- main-style---------------------------------->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- file js---------------------------------------------------->
+    <script src="~/assets/js/vendor/bootstrap.js"></script>
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- styles -->
+        <link rel="stylesheet" href="colors.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="fonts.css">
+        <link href="~/assets1/colors.css" rel="stylesheet" />
+        <link href="~/assets1/style.css" rel="stylesheet" />
+        <link href="~/assets1/fonts.css" rel="stylesheet" />
+        <script src="~/assets/js/vendor/jquery-3.2.1.min.js"></script>
+
+
+        <script src="~/assets1/script.js"></script>
+        <!-- Fonts -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>Chat Box</title>
+    </head>
+    <body>
+        <!-- constaner -->
+        <div class="outer-container roboto">
+
+            <div class="container">
+
+                <div class="inner-container">
+                    <div class="left hidden md:block">
+                        <div class="left-head">
+                            <img src="~/assets1/images/profile.jpg" alt="" class="left-profile">
+                            <div class="left-head--name roboto-bold">
+                                Arman Hosiny
+                            </div>
+                        </div>
+                        <div class="left-btns flex ">
+                            <form asp-action="Login" asp-controller="Account" id="loginform">
+
+                                <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                                    <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('loginform').submit();">
+                                        <span class="title"> Login</span>
+                                    </a>
+
+                                </button>
+                            </form>
+                            <form asp-action="Register" asp-controller="Account" id="registerform">
+
+                                <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                    <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('registerform').submit();">
+                                        <span class="title"> SignUp</span>
+                                    </a>
+
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <!-- Header -->
+                        <div class="header md:hidden" style="background-color: #1b1a1a;">
+                            <div class="flex gap-2">
+                                <p style="color: #ff6476; font: bold;">Public Chat</p>
+                            </div>
+                            <div class="right md:hidden">
+                                <div class="left-btns flex flex-col justify-center items-center w-full">
+
+                                    <form asp-action="Login" asp-controller="Account" id="loginform">
+
+                                    <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                                            <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('loginform').submit();">
+                                                <span class="title"> Login</span>
+                                            </a>
+                                        
+                                    </button>
+                                    </form>
+                                    <form asp-action="Register" asp-controller="Account" id="registerform">
+
+                                    <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                            <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('registerform').submit();">
+                                                <span class="title"> SignUp</span>
+                                            </a>
+                                        
+                                    </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right flex gap-1 md:hidden relative">
+                            <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                                <a href="/public chat">
+                                    Public Chat
+                                </a>
+                            </button>
+                            <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                <a href="/private chat">
+                                    Private Chat
+                                </a>
+                            </button>
+                        </div>
+                        <div id="divmessage" class="messages">
+
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Hello man
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Hi Arman. how are you
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Fine, where've you been til now?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Ohh man. fuck it. I had a car accident
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Oh. what happened? are You alright?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Yes dude. I'm fine. thanks
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        have you gone to see a doctor?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Hello man
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Hi Arman. how are you
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Fine, where've you been til now?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Ohh man. fuck it. I had a car accident
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Arman
+                                    </div>
+                                    <div class="message-text">
+                                        Oh. what happened? are You alright?
+                                        Oh. what happened? are You alright?
+                                        Oh. what happened? are You alright?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        Yes dude. I'm fine. thanks
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="their-message message">
+                                <div class="message-content">
+                                    <div class="message-sender">
+                                        Ali
+                                    </div>
+                                    <div class="message-text">
+                                        have you gone to see a doctor?
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="writer">
+                            <input type="text" id="txtmessage" class="writer-input" placeholder="Send a Message">
+                            <div class="writer-emojies-btn">🤠</div>
+                            <a id="btnsend">
+                                <div class="writer-send-btn">
+                                    <img src="~/assets1/images/send.png" alt="->" class="writer-send-btn-icon">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right hidden md:block">
+                        <div class="left-btns flex flex-col w-48">
+
+                            <button class="flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                <a href="/sign up">
+                                    Private Chat
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
+</body>
+</html>
+
+
+<script>
+    $(() => {
+
+        var connection = new signalR.HubConnectionBuilder().withUrl('/PChat').build()
+
+
+        connection.start().then(function() {
+            alert('Connected!!')
+           
+           
+            const USERNAME='@User.Identity.Name'
+            connection.invoke("UploadMessagesPublic", USERNAME)
+
+
+
+            connection.on('RefreshMessages', (username, allmessages, alldates, allusers) => {
+                for (let i = 0; i < allmessages.length; i++) {
+                    const message = allmessages[i]; // The message content
+                    const user = allusers[i];       // The user name
+                    const time = alldates[i];       // The formatted time string (HH:mm)
+
+                    // Append the formatted message
+                    $(divmessage).append(`<div class="their-message message">
+                                      <div class="message-content">
+                                   <div class="message-sender">
+                                                 ${user}
+                                           </div>
+                                   <div class="message-text">
+                                            ${message}
+                                            </div>
+                                      <div class="message-time">
+                                                  ${time}
+                                    </div>
+                                 </div>
+                               </div>`)
+                }
+            });
+
+
+            connection.on("RemoveUsersFromOnlineUsers", (username) => {
+                $(`#ddlonlineusers option[value='${username}']`).remove()
+            })
+
+            
+
+
+        }).catch(function(err) {
+            alert('خطا')
+        })
+
+
+
+
+
+
+        $(document).ready(function() {
+            $('#btnsend').click(function() {
+                alert('Please Login for sending messages')
+            });
+        });
+
+
+
+      
+
+    })
+
+
+
+
+</script>

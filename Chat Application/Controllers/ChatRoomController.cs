@@ -12,6 +12,31 @@ namespace Chat_Application.Controllers
             }
             return View();
         }
-      
+
+
+
+        public IActionResult PrivateChat()
+        {
+
+
+
+
+            return View();
+
+
+        }
+
+
+
+
+
+
+
+
+        public IActionResult Home()
+        {
+           return View();
+        }
+
     }
 }

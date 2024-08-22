@@ -1,0 +1,293 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styles -->
+    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link href="~/assets1/colors.css" rel="stylesheet" />
+    <link href="~/assets1/style.css" rel="stylesheet" />
+    <link href="~/assets1/fonts.css" rel="stylesheet" />
+    <script src="~/assets/js/vendor/jquery-3.2.1.min.js"></script>
+
+
+    <script src="~/assets1/script.js"></script>
+    <!-- file js---------------------------------------------------->
+    <script src="~/assets/js/vendor/bootstrap.js"></script>
+    <script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+    <!-- Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>private Chat</title>
+</head>
+<body>
+    <!-- constaner -->
+    <div class="outer-container roboto">
+
+        <div class="container">
+
+            <div class="inner-container">
+                <div class="left hidden md:block">
+                    <div class="left-head">
+                        <img src="~/assets1/images/profile.jpg" alt="" class="left-profile">
+                        <div class="left-head--name roboto-bold">
+                            Arman Hosiny
+                        </div>
+                    </div>
+                    <div class="left-btns flex ">
+                        <button class="left-btn flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                            <a href="/login">
+                                Login
+                            </a>
+                        </button>
+                        <button class="left-btn flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                            <a href="/sign up">
+                                Sign up
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <div class="main">
+                    <!-- Header -->
+                    <div class="header md:hidden">
+                        <div class="flex gap-2">
+                            <div class="header-profile-div">
+                                <img src="~/assets1/images/profile.jpg" alt="P" class="header-profile">
+                            </div>
+                            <div class="header-user-detail">
+                                <div class="header-user-detail--name roboto-bold">
+                                    Arman Hosiny
+                                </div>
+                                <div class="header-user-detail--status">
+                                    online
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right md:hidden">
+                            <div class="left-btns flex flex-col justify-center items-center w-full">
+                                <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                                    <a href="/login">
+                                        Login
+                                    </a>
+                                </button>
+                                <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                    <a href="/sign up">
+                                        Sign up
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right flex gap-1 md:hidden relative">
+                        <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
+                            <a href="/public chat">
+                                Public Chat
+                            </a>
+                        </button>
+                        <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                            <a href="/private chat">
+                                Private Chat
+                            </a>
+                        </button>
+                    </div>
+                    <div class="relative mt-1 inline-block text-left w-full dropdown md:hidden">
+                        <div class="w-full">
+                            <button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md btn-ui px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm" id="menu-button" aria-expanded="true" aria-haspopup="true" onclick="toggleDropdown()">
+                                Users
+                                <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="dropdown-menu absolute hidden right-0 z-10 w-full origin-top-right rounded-md shadow-lg ring ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                            <div class="py-1" role="none">
+                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                <button class="user text-left w-full  block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Sajad</button>
+                                <button class="user text-left w-full block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Javad</button>
+                                <button class="user text-left w-full block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Mehdi</button>
+                                <input type="text"
+                                       placeholder="Search"
+                                       class="search bg-white w-full outline-none pl-2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message">
+
+                        <div class="my-message message">
+                            <div class="message-content">
+                                <div class="message-sender">
+                                    Arman
+                                </div>
+                                <div class="message-text">
+                                    Hello man
+                                </div>
+                            </div>
+                        </div>
+          
+                    </div>
+                    <div class="writer">
+                        <input type="text" class="writer-input" placeholder="Send a Message">
+                        <div class="writer-emojies-btn">🤠</div>
+                        <div class="writer-send-btn">
+                            <img  id="btnsend" src="~/assets1/images/send.png" alt="->" class="writer-send-btn-icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="right hidden md:block">
+                    <div class="left-btns flex flex-col w-48">
+                        <button class="flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                            <a href="/login">
+                                Public Chat
+                            </a>
+                        </button>
+                        <button class="flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                            <a href="/sign up">
+                                Private Chat
+                            </a>
+                        </button>
+                    </div>
+
+                    <div class="relative inline-block text-left w-full dropdown">
+                        <div class="w-full">
+                            <button type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true" onclick="toggleDropdown2()">
+                                Options
+                                <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="dropdown-menu right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                            <div class="py-1" role="none">
+                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Sajad</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Javad</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Mehdi</a>
+                                <input type="text"
+                                       placeholder="Search"
+                                       class="bg-none w-full outline-none pl-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="~/assets1/script.js"></script>
+    <link href="~/assets1/style.css" rel="stylesheet" />
+   
+</body>
+
+
+<script>
+    $(() => {
+        alert('j')
+        var connection = new signalR.HubConnectionBuilder().withUrl('/PChat').build()
+
+
+        connection.start().then(function() {
+            alert('ارتباط موفقیت امیز بود')
+
+            connection.on('SendMessageFromAsptoHtml', (username, message, time) => {
+                $(divmessage).append(`<div class="ltr"><b>${username}:</b> ${message} ${time}</div><br/>`);
+                var divmessage1 = document.getElementById('divmessage')
+                divmessage1.scrollTop = divmessage1.scrollHeight
+
+            })
+
+            connection.on('RefreshOnlineUsers', onlineusers => {
+                $(ddlonlineusers).html('<option value="">Select</option>')
+                for (let x of onlineusers) {
+                    $(ddlonlineusers).append(`<option value="${x}">${x}</option>`)
+                }
+            })
+
+            connection.on('RefreshMessages', (allmessages, alldates, allusers) => {
+                for (let i = 0; i < allmessages.length; i++) {
+                    const message = allmessages[i]; // The message content
+                    const user = allusers[i];       // The user name
+                    const time = alldates[i];       // The formatted time string (HH:mm)
+
+                    // Append the formatted message
+                    $(divmessage).append(`<div class="ltr"><b>${user}:</b> ${message} ${time}</div><br/>`);
+
+                }
+
+
+            });
+
+
+            connection.on("RemoveUsersFromOnlineUsers", (username) => {
+                $(`#ddlonlineusers option[value='${username}']`).remove()
+            })
+
+            connection.invoke("RegisterUserInSignalR", '@User.Identity.Name')
+
+
+
+        }).catch(function(err) {
+            alert('خطا')
+        })
+
+
+
+
+
+
+
+
+        $('#ddlonlineusers').change(function() {
+
+
+
+            var selectedUser = $(this).val();
+            $('#divmessage').empty(); // Clear existing messages
+            connection.invoke("UploadMessagesPrivate", selectedUser, '@User.Identity.Name')
+
+        });
+
+
+  
+            $(btnsend).click(function() {
+
+                var selectedUser = $(ddlonlineusers).val()
+                connection.invoke('SendMessageFromHtmlToAsp', $(txtmessage).val(), '@User.Identity.Name', selectedUser, $(fullname).val())
+
+
+            })
+
+     
+
+    })
+
+
+
+
+</script>

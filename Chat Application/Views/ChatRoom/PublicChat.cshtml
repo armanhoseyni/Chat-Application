@@ -40,6 +40,8 @@
                 <div class="inner-container">
                     <div class="left hidden md:block">
                         <div class="left-head">
+
+                         
                             <img src="~/assets1/images/profile.jpg" alt="" class="left-profile">
                             <div class="left-head--name roboto-bold">
                                 Arman Hosiny
@@ -67,14 +69,18 @@
                             <div class="right md:hidden">
                                 <div class="left-btns flex flex-col justify-center items-center w-full">
                                     <button class="flex-1 w-full btn-ui text-white font-bold  border border-blue-700 rounded">
-                                        <a href="/login">
-                                            Login
-                                        </a>
+                                        <form asp-action="Login" asp-controller="Account" id="loginform">
+                                            <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('loginform').submit();">
+                                                <span class="title"> Login</span>
+                                            </a>
+                                        </form>
                                     </button>
                                     <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
-                                        <a href="/sign up">
-                                            Sign up
-                                        </a>
+                                        <form asp-action="Register" asp-controller="Account" id="registerform">
+                                            <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('registerform').submit();">
+                                                <span class="title"> SignUp</span>
+                                            </a>
+                                        </form>
                                     </button>
                                 </div>
                             </div>
@@ -85,13 +91,15 @@
                                     Public Chat
                                 </a>
                             </button>
+                            <form asp-action="PrivateChat" asp-controller="ChatRoom">
                             <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
                                 <a href="/private chat">
                                     Private Chat
                                 </a>
                             </button>
+                            </form>
                         </div>
-                        <div  id="divmessage" class="messages">
+                        <div id="divmessage" style="overflow-y: scroll;" class="messages">
 
                             <div class="my-message message">
                                 <div class="message-content">
@@ -99,142 +107,11 @@
                                         Arman
                                     </div>
                                     <div class="message-text">
-                                        Hello man
+                                        Hello man cvsdddddddddddddddddddddddddddddddddddd
                                     </div>
                                 </div>
                             </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        Hi Arman. how are you
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Arman
-                                    </div>
-                                    <div class="message-text">
-                                        Fine, where've you been til now?
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        Ohh man. fuck it. I had a car accident
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Arman
-                                    </div>
-                                    <div class="message-text">
-                                        Oh. what happened? are You alright?
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        Yes dude. I'm fine. thanks
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        have you gone to see a doctor?
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Arman
-                                    </div>
-                                    <div class="message-text">
-                                        Hello man
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        Hi Arman. how are you
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Arman
-                                    </div>
-                                    <div class="message-text">
-                                        Fine, where've you been til now?
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        Ohh man. fuck it. I had a car accident
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="my-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Arman
-                                    </div>
-                                    <div class="message-text">
-                                        Oh. what happened? are You alright?
-                                        Oh. what happened? are You alright?
-                                        Oh. what happened? are You alright?
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        Yes dude. I'm fine. thanks
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="their-message message">
-                                <div class="message-content">
-                                    <div class="message-sender">
-                                        Ali
-                                    </div>
-                                    <div class="message-text">
-                                        have you gone to see a doctor?
-                                    </div>
-                                </div>
-                            </div>
+                          
 
                         </div>
                         <div class="writer">
@@ -249,12 +126,15 @@
                     </div>
                     <div class="right hidden md:block">
                         <div class="left-btns flex flex-col w-48">
+                            <form asp-action="PrivateChat" asp-controller="ChatRoom" id="privatechat">
 
-                            <button class="flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                                <a href="/sign up">
-                                    Private Chat
-                                </a>
-                            </button>
+                                <button class="flex-1 w-full btn-ui text-white font-bold border border-blue-700 rounded">
+                                    <a href="javascript:void(0);" class="login-ds" onclick="document.getElementById('privatechat').submit();">
+                                        <span class="title"> Private Chat</span>
+                                    </a>
+
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -276,13 +156,13 @@
 
         connection.start().then(function() {
             alert('ارتباط موفقیت امیز بود')
+            const USERNAME = '@User.Identity.Name'
+            connection.invoke("UploadMessagesPublic",USERNAME);
 
-            connection.invoke("UploadMessagesPublic", '@User.Identity.Name')
 
-
-
+            
             connection.on('SendMessageFromAsptoHtml', (username, message,time) => {
-                $(divmessage).append(`<div class="my-message message">
+                if (username == USERNAME) {  $(divmessage).append(`<div class="my-message message">
                           <div class="message-content">
                        <div class="message-sender">
                                      ${username}
@@ -295,6 +175,30 @@
                         </div>
                      </div>
                            </div>`)
+                
+                
+                }
+
+
+                else{
+                    $(divmessage).append(`<div class="their-message message">
+                              <div class="message-content">
+                           <div class="message-sender">
+                                         ${username}
+                                   </div>
+                           <div class="message-text">
+                                    ${message}
+                                    </div>
+                              <div class="message-time">
+                                          ${time}
+                            </div>
+                         </div>
+                               </div>`)
+
+
+                }
+                var divmessage1 = document.getElementById('divmessage')
+                divmessage1.scrollTop = divmessage1.scrollHeight
 
             })
             connection.on('RefreshOnlineUsers', onlineusers => {
@@ -308,21 +212,38 @@
                     const message = allmessages[i]; // The message content
                     const user = allusers[i];       // The user name
                     const time = alldates[i];       // The formatted time string (HH:mm)
+                    if (user== USERNAME) {
+                        $(divmessage).append(`<div class="my-message message">
+                              <div class="message-content">
+                           <div class="message-sender">
+                                         ${user}
+                                   </div>
+                           <div class="message-text">
+                                    ${message}
+                                    </div>
+                              <div class="message-time">
+                                          ${time}
+                            </div>
+                         </div>
+                       </div>`)
+                    }
+                    else{
 
-                    // Append the formatted message
-                       $(divmessage).append(`<div class="my-message message">
-                          <div class="message-content">
-                       <div class="message-sender">
-                                     ${user}
-                               </div>
-                       <div class="message-text">
-                                ${message}
+                        $(divmessage).append(`<div class="their-message message">
+                                  <div class="message-content">
+                               <div class="message-sender">
+                                             ${user}
+                                       </div>
+                               <div class="message-text">
+                                        ${message}
+                                        </div>
+                                  <div class="message-time">
+                                              ${time}
                                 </div>
-                          <div class="message-time">
-                                      ${time}
-                        </div>
-                     </div>
-                   </div>`)}
+                             </div>
+                           </div>`)
+
+                    }}
             });
 
 
@@ -346,6 +267,8 @@
 
         $(document).ready(function() {
             $('#btnsend').click(function() {
+                $('#btnsend').empty();
+
                 var selectedUser = "";
                 var message = $('#txtmessage').val();
                 var fullname = $('#fullname').val();
