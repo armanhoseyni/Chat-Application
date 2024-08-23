@@ -2,6 +2,8 @@
 @{
     Layout = null;
 }
+@using Microsoft.AspNetCore.Identity
+ @using Chat_Application.Areas.Identity.Data
 
 <!DOCTYPE html>
 <head>
@@ -38,6 +40,20 @@
                         <div class="left-head--name roboto-bold">
                             Arman Hosiny
                         </div>
+
+                           <div class="form-group">
+        <label>نام کاربر</label>
+        @if (User.Identity.IsAuthenticated != false)
+        {
+        @inject UserManager<ApplicationUser > userManager
+
+            ApplicationUser userr = await userManager.FindByNameAsync(User.Identity.Name);
+            string fullname = $"{userr.FirstName}  {userr.LastName}  ";
+            <input class="form-control" disabled="disabled" id="fullname" value="@fullname" />
+
+        }
+    </div>
+
                     </div>
                     <div class="left-btns flex ">
                         <button class="left-btn flex-1 btn-ui text-white font-bold py-2 px-4 border border-blue-700 rounded">
@@ -51,8 +67,11 @@
                             </a>
                         </button>
                     </div>
+                    <div style="min-height : 100px; width : 100%; background-color : palegreen; " id = "divnotification"></div>
+
                 </div>
-                <div class="main">
+                    
+                <div class="main">  
                     <!-- Header -->
                     <div class="header md:hidden">
                         <div class="flex gap-2">
@@ -127,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="message">
+                    <div id="divmessage" class="message">
 
                         <div class="my-message message">
                             <div class="message-content">
@@ -142,7 +161,7 @@
           
                     </div>
                     <div class="writer">
-                        <input type="text" class="writer-input" placeholder="Send a Message">
+                        <input type="text" id="txtmessage" class="writer-input" placeholder="Send a Message">
                         <div class="writer-emojies-btn">🤠</div>
                         <div class="writer-send-btn">
                             <img  id="btnsend" src="~/assets1/images/send.png" alt="->" class="writer-send-btn-icon">
@@ -183,17 +202,13 @@
                             From: "transform opacity-100 scale-100"
                             To: "transform opacity-0 scale-95"
                         -->
-                        <div class="dropdown-menu right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                            <div class="py-1" role="none">
-                                <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Sajad</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Javad</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Mehdi</a>
-                                <input type="text"
-                                       placeholder="Search"
-                                       class="bg-none w-full outline-none pl-2">
-                            </div>
-                        </div>
+     <select class ="form-control" id="ddlonlineusers"></select>
+
+
+        <input id="searchUsers" type="text" placeholder="Search" class="bg-none w-full outline-none pl-2 mb-2">
+       
+   
+
                     </div>
                 </div>
             </div>
@@ -208,15 +223,47 @@
 
 <script>
     $(() => {
-        alert('j')
+        
         var connection = new signalR.HubConnectionBuilder().withUrl('/PChat').build()
-
-
         connection.start().then(function() {
+            const USERNAME = '@User.Identity.Name'
             alert('ارتباط موفقیت امیز بود')
+           connection.on('SendMessageFromAsptoHtml', (username, message, time) => {
+              if (username == USERNAME) {  $(divmessage).append(`<div class="my-message message">
+                          <div class="message-content">
+                       <div class="message-sender">
+                                     ${username}
+                               </div>
+                       <div class="message-text">
+                                ${message}
+                                </div>
+                          <div class="message-time">
+                                      ${time}
+                        </div>
+                     </div>
+                           </div>`)
+                
+                
+                }
 
-            connection.on('SendMessageFromAsptoHtml', (username, message, time) => {
-                $(divmessage).append(`<div class="ltr"><b>${username}:</b> ${message} ${time}</div><br/>`);
+
+                else{
+                    $(divmessage).append(`<div class="their-message message">
+                              <div class="message-content">
+                           <div class="message-sender">
+                                         ${username}
+                                   </div>
+                           <div class="message-text">
+                                    ${message}
+                                    </div>
+                              <div class="message-time">
+                                          ${time}
+                            </div>
+                         </div>
+                               </div>`)
+
+
+                }
                 var divmessage1 = document.getElementById('divmessage')
                 divmessage1.scrollTop = divmessage1.scrollHeight
 
@@ -224,28 +271,81 @@
 
             connection.on('RefreshOnlineUsers', onlineusers => {
                 $(ddlonlineusers).html('<option value="">Select</option>')
-                for (let x of onlineusers) {
-                    $(ddlonlineusers).append(`<option value="${x}">${x}</option>`)
+                for (let x of onlineusers) { 
+                $(ddlonlineusers).append(`<option value="${x}">${x}</option>`)
                 }
             })
+
+
+$(document).ready(function() {
+    $('#searchUsers').on('keyup', function() {
+        var searchText = $(this).val().toLowerCase();
+
+        $('#ddlonlineusers a').each(function() {
+            if ($(this).text().toLowerCase().indexOf(searchText) === -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    });
+});
+
 
             connection.on('RefreshMessages', (allmessages, alldates, allusers) => {
                 for (let i = 0; i < allmessages.length; i++) {
                     const message = allmessages[i]; // The message content
                     const user = allusers[i];       // The user name
                     const time = alldates[i];       // The formatted time string (HH:mm)
+                    if (user== USERNAME) {
+                        $(divmessage).append(`<div class="my-message message">
+                              <div class="message-content">
+                           <div class="message-sender">
+                                         ${user}
+                                   </div>
+                           <div class="message-text">
+                                    ${message}
+                                    </div>
+                              <div class="message-time">
+                                          ${time}
+                            </div>
+                         </div>
+                       </div>`)
+                    }
+                    else{
+                        $(divmessage).append(`<div class="their-message message">
+                                  <div class="message-content">
+                               <div class="message-sender">
+                                             ${user}
+                                       </div>
+                               <div class="message-text">
+                                        ${message}
+                                        </div>
+                                  <div class="message-time">
+                                              ${time}
+                                </div>
+                             </div>
+                           </div>`)
 
-                    // Append the formatted message
-                    $(divmessage).append(`<div class="ltr"><b>${user}:</b> ${message} ${time}</div><br/>`);
-
-                }
-
-
+                    }}
             });
-
-
             connection.on("RemoveUsersFromOnlineUsers", (username) => {
                 $(`#ddlonlineusers option[value='${username}']`).remove()
+            })
+            connection.on("Notification", (name,message,time) => {
+                $(divnotification).append(`
+                                      <div class="message-content">
+                                   <div class="message-sender">
+                                                 ${name}
+                                           </div>
+                                   <div class="message-text">
+                                            ${message}
+                                            </div>
+                                      <div class="message-time">
+                                                  ${time}
+                                    </div>
+                                 </div>
+                               `)
             })
 
             connection.invoke("RegisterUserInSignalR", '@User.Identity.Name')
@@ -258,15 +358,7 @@
 
 
 
-
-
-
-
-
         $('#ddlonlineusers').change(function() {
-
-
-
             var selectedUser = $(this).val();
             $('#divmessage').empty(); // Clear existing messages
             connection.invoke("UploadMessagesPrivate", selectedUser, '@User.Identity.Name')
@@ -274,20 +366,12 @@
         });
 
 
-  
-            $(btnsend).click(function() {
 
+
+            $(btnsend).click(function() {
                 var selectedUser = $(ddlonlineusers).val()
                 connection.invoke('SendMessageFromHtmlToAsp', $(txtmessage).val(), '@User.Identity.Name', selectedUser, $(fullname).val())
-
-
             })
-
-     
-
     })
-
-
-
 
 </script>

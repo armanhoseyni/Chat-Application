@@ -84,7 +84,11 @@ namespace Chat_Application.Hubs
                     await Clients.Clients(new List<string> { RecepientUserinfo.connectionId, SendertUserinfo.connectionId })
                                   .SendAsync("SendMessageFromAsptoHtml", name, message, time);
                 }
-
+                else
+                {
+                    await Clients.Client(SendertUserinfo.connectionId).SendAsync("SendMessageFromAsptoHtml", name, message, time);
+                    await Clients.Client(RecepientUserinfo.connectionId).SendAsync("Notification", name, message, time);
+                }
             }
 
 
@@ -255,7 +259,7 @@ namespace Chat_Application.Hubs
                 .Join(userManager.Users,
                       message => message.SenderUser_Id,
                       user => user.Id,
-                      (message, user) => user.FirstName)
+                      (message, user) => user.UserName)
                 .ToList();
 
             //  await Clients.All.SendAsync("RefreshMessages", allmessages, alldates, allusers);

@@ -267,16 +267,16 @@
 
         $(document).ready(function() {
             $('#btnsend').click(function() {
-                $('#btnsend').empty();
-
-                var selectedUser = "";
                 var message = $('#txtmessage').val();
                 var fullname = $('#fullname').val();
 
-                connection.invoke('SendMessageFromHtmlToAsp', message, '@User.Identity.Name', selectedUser, fullname)
+                connection.invoke('SendMessageFromHtmlToAsp', message, '@User.Identity.Name', "", fullname)
                     .catch(function(err) {
                         console.error(err.toString());
                     });
+
+                // Clear the input field after sending the message
+                $('#txtmessage').val(''); // Use this to clear the input field
             });
         });
 
