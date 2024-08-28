@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Component</title>
+</head>
+<link href="~/css/stylesheet.css" rel="stylesheet" />
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Chat</div>
+                <div class="card-description">Select a person to start chatting.</div>
+            </div>
+            <div class="card-content">
+                <div class="search-container">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                    <input type="search" placeholder="Search contacts..." class="input">
+                </div>
+                <div class="contacts">
+                    <a href="#" class="contact-item">
+                        <div class="avatar">JD</div>
+                        <div class="contact-info">
+                            <div class="contact-name">John Doe</div>
+                            <div class="contact-message">Hey, how's it going?</div>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="avatar">JA</div>
+                        <div class="contact-info">
+                            <div class="contact-name">Jane Appleseed</div>
+                            <div class="contact-message">Just checking in, let me know if you need anything.</div>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="avatar">MJ</div>
+                        <div class="contact-info">
+                            <div class="contact-name">Michael Johnson</div>
+                            <div class="contact-message">Attached the files you requested.</div>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="avatar">SA</div>
+                        <div class="contact-info">
+                            <div class="contact-name">Sarah Anderson</div>
+                            <div class="contact-message">Let's discuss the project timeline.</div>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-item">
+                        <div class="avatar">EM</div>
+                        <div class="contact-info">
+                            <div class="contact-name">Emily Martinez</div>
+                            <div class="contact-message">Checking in on the status of the proposal.</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card chat-window">
+            <div class="card-header">
+                <div class="card-title">Chat with John Doe</div>
+            </div>
+            <div class="card-content chat-messages">
+                <div class="chat-message">
+                    <div class="avatar">JD</div>
+                    <div class="chat-bubble">
+                        <p>Hey, how's it going?</p>
+                        <div class="chat-timestamp">10:30 AM</div>
+                    </div>
+                </div>
+                <div class="chat-message outgoing">
+                    <div class="chat-bubble outgoing">
+                        <p>I'm doing great, thanks for asking!</p>
+                        <div class="chat-timestamp">10:31 AM</div>
+                    </div>
+                    <div class="avatar">YO</div>
+                </div>
+                <div class="chat-message">
+                    <div class="avatar">JD</div>
+                    <div class="chat-bubble">
+                        <p>That's great to hear! Did you have a chance to look at the proposal I sent over?</p>
+                        <div class="chat-timestamp">10:32 AM</div>
+                    </div>
+                </div>
+                <div class="chat-message outgoing">
+                    <div class="chat-bubble outgoing">
+                        <p>Yes, I reviewed it and I think it looks good. Let's discuss it further in our meeting tomorrow.</p>
+                        <div class="chat-timestamp">10:33 AM</div>
+                    </div>
+                    <div class="avatar">YO</div>
+                </div>
+            </div>
+            <div class="card-content message-input-container">
+                <textarea placeholder="Type your message..." class="message-input"></textarea>
+                <button type="submit" class="send-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m5 12 7-7 7 7" />
+                        <path d="M12 19V5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

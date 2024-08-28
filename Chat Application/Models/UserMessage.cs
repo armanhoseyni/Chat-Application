@@ -26,7 +26,8 @@ namespace Chat_Application.Models
         [ForeignKey("RecepientUser_Id")]
         public ApplicationUser? RecepientUser { get; set; }
 
-
+        public Boolean seened { get; set; }
+        
 
 
 

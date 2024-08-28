@@ -7,6 +7,7 @@ using Chat_Application.Areas.Identity.Data;
 using Chat_Application.Models;
 using DB;
 using System.Security.Cryptography;
+using NuGet.Protocol.Plugins;
 
 namespace Chat_Application.Hubs
 {
@@ -27,8 +28,6 @@ namespace Chat_Application.Hubs
             //Alll
 
             if (receipientuser == "")
-
-
             {
 
                 receipientuser = "admin@gmail.com";
@@ -73,7 +72,7 @@ namespace Chat_Application.Hubs
                     Message = message,
                     MessageSentTime = DateTime.Now,
 
-
+                    seened =false
 
                 };
                 db.Add(userMessage);
@@ -81,12 +80,19 @@ namespace Chat_Application.Hubs
                 var time = DateTime.Now.ToString("HH:mm");
                 if (RecepientUserinfo.CurrentRoom == SendertUserinfo.Id)
                 {
+                    
                     await Clients.Clients(new List<string> { RecepientUserinfo.connectionId, SendertUserinfo.connectionId })
-                                  .SendAsync("SendMessageFromAsptoHtml", name, message, time);
+                                  .SendAsync("SendMessageFromAsptoHtml", SendertUserinfo.UserName, message, time);
+
+
+                     db.UserMessages.FirstOrDefault(x => (x.Message == message)).seened=true;
+                    
+                    db.SaveChanges();
+                    
                 }
                 else
                 {
-                    await Clients.Client(SendertUserinfo.connectionId).SendAsync("SendMessageFromAsptoHtml", name, message, time);
+                    await Clients.Client(SendertUserinfo.connectionId).SendAsync("SendMessageFromAsptoHtml", SendertUserinfo.UserName, message, time);
                     await Clients.Client(RecepientUserinfo.connectionId).SendAsync("Notification", name, message, time);
                 }
             }
@@ -222,6 +228,21 @@ namespace Chat_Application.Hubs
                    .Where(x => (x.RecepientUser_Id == recepID && x.SenderUser_Id == senderID) || (x.RecepientUser_Id == senderID && x.SenderUser_Id == recepID))
                    .Select(x => x.Message)
                    .ToList();
+
+
+
+            var messages = db.UserMessages
+    .Where(x =>
+        (x.RecepientUser_Id == senderID && x.SenderUser_Id == recepID))
+    .ToList();
+
+            foreach (var message in messages)
+            {
+                message.seened = true;
+            }
+
+            // Save all changes to the database
+            db.SaveChanges();
 
             List<string> alldates = db.UserMessages
                   .Where(x => (x.RecepientUser_Id == recepID && x.SenderUser_Id == senderID) || (x.RecepientUser_Id == senderID && x.SenderUser_Id == recepID))
